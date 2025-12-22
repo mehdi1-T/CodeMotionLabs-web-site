@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeMotionLabs - Simple and Smart Tech Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-bounce {
+            animation: bounce 2s infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-white shadow-md">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <button onclick="scrollToSection('hero')" class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-gradient-to-br from-cyan-500 to-green-500 rounded-lg flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                </div>
+                <h1 class="text-xl sm:text-2xl font-bold text-gray-900">CodeMotionLabs</h1>
+            </button>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-6">
+                <button onclick="scrollToSection('services')" class="text-gray-700 hover:text-cyan-600 font-medium transition-colors">Services</button>
+                <button onclick="scrollToSection('projects')" class="text-gray-700 hover:text-cyan-600 font-medium transition-colors">Projects</button>
+                <button onclick="scrollToSection('process')" class="text-gray-700 hover:text-cyan-600 font-medium transition-colors">Process</button>
+                <button onclick="scrollToSection('contact')" class="bg-cyan-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-cyan-700 transition-colors">Contact</button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button 
+                onclick="toggleMenu()"
+                class="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                aria-label="Toggle menu"
+            >
+                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+                <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200 shadow-lg">
+            <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col space-y-2">
+                <button onclick="scrollToSection('hero')" class="text-left py-3 px-4 hover:bg-gray-100 rounded-lg text-lg font-medium transition-colors">Home</button>
+                <button onclick="scrollToSection('services')" class="text-left py-3 px-4 hover:bg-gray-100 rounded-lg text-lg font-medium transition-colors">Services</button>
+                <button onclick="scrollToSection('projects')" class="text-left py-3 px-4 hover:bg-gray-100 rounded-lg text-lg font-medium transition-colors">Projects</button>
+                <button onclick="scrollToSection('process')" class="text-left py-3 px-4 hover:bg-gray-100 rounded-lg text-lg font-medium transition-colors">Process</button>
+                <button onclick="scrollToSection('contact')" class="text-left py-3 px-4 bg-cyan-600 text-white hover:bg-cyan-700 rounded-lg text-lg font-semibold transition-colors">Contact</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="pt-28 pb-20 px-4 bg-gradient-to-br from-cyan-50 via-white to-green-50 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-cyan-400 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-green-400 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <div class="mb-8 inline-block">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-cyan-500 to-green-500 rounded-2xl flex items-center justify-center shadow-xl mx-auto transform hover:scale-110 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                </div>
+            </div>
+            
+            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                We Build Simple and Smart<br />Tech Solutions for Your Ideas
+            </h2>
+            
+            <p class="text-lg sm:text-xl md:text-2xl text-gray-600 mb-10 leading-relaxed max-w-3xl mx-auto">
+                Turn your vision into reality with custom technology that works for you
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button 
+                    onclick="scrollToSection('contact')"
+                    class="w-full sm:w-auto bg-cyan-600 text-white text-lg sm:text-xl px-8 sm:px-10 py-4 sm:py-5 rounded-full font-semibold hover:bg-cyan-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center gap-2"
+                >
+                    Get Started Now
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+                
+                <button 
+                    onclick="scrollToSection('services')"
+                    class="w-full sm:w-auto bg-white text-cyan-600 text-lg sm:text-xl px-8 sm:px-10 py-4 sm:py-5 rounded-full font-semibold hover:bg-gray-50 transition-all shadow-md hover:shadow-lg border-2 border-cyan-600"
+                >
+                    Learn More
+                </button>
+            </div>
+            
+            <div class="mt-16 animate-bounce">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 sm:py-20 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900">What We Do</h2>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                    We create technology solutions that are easy to use and perfectly fit your needs
+                </p>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 gap-6 sm:gap-8">
+                <div class="bg-gradient-to-br from-cyan-50 to-cyan-100 p-6 sm:p-8 rounded-2xl shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1">
+                    <div class="bg-cyan-600 w-14 h-14 rounded-xl flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-3 text-gray-900">Web Solutions</h3>
+                    <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                        Beautiful websites and online platforms that help your business grow and reach more customers
+                    </p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 sm:p-8 rounded-2xl shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1">
+                    <div class="bg-green-600 w-14 h-14 rounded-xl flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-3 text-gray-900">Custom Programming</h3>
+                    <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                        Special software built just for you to solve your specific business challenges
+                    </p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 sm:p-8 rounded-2xl shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1">
+                    <div class="bg-blue-600 w-14 h-14 rounded-xl flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                            <rect x="9" y="9" width="6" height="6"></rect>
+                            <line x1="9" y1="1" x2="9" y2="4"></line>
+                            <line x1="15" y1="1" x2="15" y2="4"></line>
+                            <line x1="9" y1="20" x2="9" y2="23"></line>
+                            <line x1="15" y1="20" x2="15" y2="23"></line>
+                            <line x1="20" y1="9" x2="23" y2="9"></line>
+                            <line x1="20" y1="14" x2="23" y2="14"></line>
+                            <line x1="1" y1="9" x2="4" y2="9"></line>
+                            <line x1="1" y1="14" x2="4" y2="14"></line>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-3 text-gray-900">Electronics & Smart Systems</h3>
+                    <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                        Smart devices and automated systems that make your work easier and more efficient
+                    </p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-teal-50 to-teal-100 p-6 sm:p-8 rounded-2xl shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1">
+                    <div class="bg-teal-600 w-14 h-14 rounded-xl flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-3 text-gray-900">Custom Tech Solutions</h3>
+                    <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                        Unique technology solutions designed specifically for your unique idea or problem
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 sm:py-20 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900">Featured Projects</h2>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                    Real solutions we've built for real businesses
+                </p>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 gap-6 sm:gap-8">
+                <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1">
+                    <div class="bg-gradient-to-br from-cyan-400 to-blue-500 h-48 sm:h-56 rounded-xl mb-5 flex items-center justify-center shadow-lg">
+                        <div class="text-center">
+                            <div class="w-16 h-16 sm:w-20 sm:h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-3 backdrop-blur-sm">
+                                <span class="text-white text-3xl sm:text-4xl font-bold">🛒</span>
+                            </div>
+                            <span class="text-white text-xl sm:text-2xl font-bold">Online Store</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-3 text-gray-900">Online Store Platform</h3>
+                    <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                        A complete online shopping system that helped a local business reach customers nationwide
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1">
+                    <div class="bg-gradient-to-br from-green-400 to-teal-500 h-48 sm:h-56 rounded-xl mb-5 flex items-center justify-center shadow-lg">
+                        <div class="text-center">
+                            <div class="w-16 h-16 sm:w-20 sm:h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-3 backdrop-blur-sm">
+                                <span class="text-white text-3xl sm:text-4xl font-bold">📦</span>
+                            </div>
+                            <span class="text-white text-xl sm:text-2xl font-bold">Inventory</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-3 text-gray-900">Smart Inventory System</h3>
+                    <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                        Automated tracking system that saves time and reduces errors in warehouse management
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1">
+                    <div class="bg-gradient-to-br from-purple-400 to-pink-500 h-48 sm:h-56 rounded-xl mb-5 flex items-center justify-center shadow-lg">
+                        <div class="text-center">
+                            <div class="w-16 h-16 sm:w-20 sm:h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-3 backdrop-blur-sm">
+                                <span class="text-white text-3xl sm:text-4xl font-bold">📅</span>
+                            </div>
+                            <span class="text-white text-xl sm:text-2xl font-bold">Booking</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-3 text-gray-900">Booking Management App</h3>
+                    <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                        Simple appointment system that makes scheduling easy for businesses and customers
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1">
+                    <div class="bg-gradient-to-br from-orange-400 to-red-500 h-48 sm:h-56 rounded-xl mb-5 flex items-center justify-center shadow-lg">
+                        <div class="text-center">
+                            <div class="w-16 h-16 sm:w-20 sm:h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-3 backdrop-blur-sm">
+                                <span class="text-white text-3xl sm:text-4xl font-bold">🏠</span>
+                            </div>
+                            <span class="text-white text-xl sm:text-2xl font-bold">Smart Home</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-3 text-gray-900">Smart Home Controller</h3>
+                    <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                        Control lights, temperature, and security from your phone for modern homes
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-16 sm:py-20 px-4 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900">How to Get Our Service</h2>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                    Simple steps from your idea to a finished solution
+                </p>
+            </div>
+            
+            <div class="space-y-6 sm:space-y-8">
+                <div class="flex items-start gap-4 sm:gap-6 bg-gradient-to-r from-cyan-50 to-transparent p-5 sm:p-6 rounded-2xl transform hover:scale-105 transition-transform">
+                    <div class="bg-cyan-600 text-white rounded-full w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center text-2xl sm:text-3xl font-bold flex-shrink-0 shadow-lg">
+                        1
+                    </div>
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-2 text-gray-900">Contact Us</h3>
+                        <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                            Call, email, or message us on Instagram. We'll respond quickly to discuss your needs
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-4 sm:gap-6 bg-gradient-to-r from-green-50 to-transparent p-5 sm:p-6 rounded-2xl transform hover:scale-105 transition-transform">
+                    <div class="bg-green-600 text-white rounded-full w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center text-2xl sm:text-3xl font-bold flex-shrink-0 shadow-lg">
+                        2
+                    </div>
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-2 text-gray-900">Tell Us Your Idea</h3>
+                        <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                            Explain what you want to build. Don't worry about technical details - we'll figure that out
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-4 sm:gap-6 bg-gradient-to-r from-blue-50 to-transparent p-5 sm:p-6 rounded-2xl transform hover:scale-105 transition-transform">
+                    <div class="bg-blue-600 text-white rounded-full w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center text-2xl sm:text-3xl font-bold flex-shrink-0 shadow-lg">
+                        3
+                    </div>
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-2 text-gray-900">We Build the Solution</h3>
+                        <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                            Our team creates your solution while keeping you updated throughout the process
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-4 sm:gap-6 bg-gradient-to-r from-teal-50 to-transparent p-5 sm:p-6 rounded-2xl transform hover:scale-105 transition-transform">
+                    <div class="bg-teal-600 text-white rounded-full w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center text-2xl sm:text-3xl font-bold flex-shrink-0 shadow-lg">
+                        4
+                    </div>
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-2 text-gray-900">You Receive the Final Product</h3>
+                        <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                            Get your finished solution with full support and training on how to use it
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 sm:py-20 px-4 bg-gradient-to-br from-cyan-50 via-white to-green-50 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-cyan-400 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-green-400 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900">Ready to Start Your Project?</h2>
+            <p class="text-lg sm:text-xl text-gray-600 mb-10 sm:mb-12 leading-relaxed">
+                Contact us today and let's bring your idea to life
+            </p>
+            
+            <div class="space-y-4 sm:space-y-5 mb-10">
+                <a 
+                    href="tel:+1234567890"
+                    class="flex items-center gap-4 sm:gap-6 bg-white p-5 sm:p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all text-left w-full max-w-md mx-auto group transform hover:scale-105"
+                >
+                    <div class="bg-cyan-600 p-3 sm:p-4 rounded-xl group-hover:bg-cyan-700 transition-colors shadow-md flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-gray-600 text-sm font-medium mb-1">Call Us</p>
+                        <p class="text-gray-900 text-xl sm:text-2xl font-bold">+212 693934992</p>
+                    </div>
+                </a>
+                
+                <a 
+                    href="mailto:info@codemotionlabs.com"
+                    class="flex items-center gap-4 sm:gap-6 bg-white p-5 sm:p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all text-left w-full max-w-md mx-auto group transform hover:scale-105"
+                >
+                    <div class="bg-green-600 p-3 sm:p-4 rounded-xl group-hover:bg-green-700 transition-colors shadow-md flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-gray-600 text-sm font-medium mb-1">Email Us</p>
+                        <p class="text-gray-900 text-base sm:text-xl font-bold break-all">mehditalalha29@gmail.com</p>
+                    </div>
+                </a>
+                
+                <a 
+                    href="https://instagram.com/codemotionlabs"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-4 sm:gap-6 bg-white p-5 sm:p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all text-left w-full max-w-md mx-auto group transform hover:scale-105"
+                >
+                    <div class="bg-pink-600 p-3 sm:p-4 rounded-xl group-hover:bg-pink-700 transition-colors shadow-md flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-gray-600 text-sm font-medium mb-1">Follow Us</p>
+                        <p class="text-gray-900 text-xl sm:text-2xl font-bold">@codemotionlabs</p>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="bg-white bg-opacity-80 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-lg max-w-md mx-auto">
+                <p class="text-gray-700 text-base sm:text-lg font-medium mb-2">⚡ Quick Response Time</p>
+                <p class="text-gray-600 text-sm sm:text-base">We typically respond within 24 hours</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10 sm:py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-8">
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-green-500 rounded-xl flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold">CodeMotionLabs</h3>
+                </div>
+                <p class="text-gray-400 text-lg sm:text-xl mb-6 font-medium">Think. Create. Execute.</p>
+                
+                <div class="flex flex-wrap justify-center gap-6 mb-8">
+                    <button onclick="scrollToSection('services')" class="text-gray-300 hover:text-white transition-colors">Services</button>
+                    <button onclick="scrollToSection('projects')" class="text-gray-300 hover:text-white transition-colors">Projects</button>
+                    <button onclick="scrollToSection('process')" class="text-gray-300 hover:text-white transition-colors">Process</button>
+                    <button onclick="scrollToSection('contact')" class="text-gray-300 hover:text-white transition-colors">Contact</button>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-500 text-sm sm:text-base">© 2024 CodeMotionLabs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let menuOpen = false;
+        let scrolled = false;
+
+        // Handle scroll for navbar styling
+        function handleScroll() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                if (!scrolled) {
+                    navbar.classList.remove('shadow-md');
+                    navbar.classList.add('shadow-lg');
+                    scrolled = true;
+                }
+            } else {
+                if (scrolled) {
+                    navbar.classList.remove('shadow-lg');
+                    navbar.classList.add('shadow-md');
+                    scrolled = false;
+                }
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+
+        // Toggle mobile menu
+        function toggleMenu() {
+            menuOpen = !menuOpen;
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            if (menuOpen) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        }
+
+        // Smooth scroll to section
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                const offset = 80;
+                const bodyRect = document.body.getBoundingClientRect().top;
+                const elementRect = element.getBoundingClientRect().top;
+                const elementPosition = elementRect - bodyRect;
+                const offsetPosition = elementPosition - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+            
+            // Close mobile menu if open
+            if (menuOpen) {
+                toggleMenu();
+            }
+        }
+    </script>
+</body>
+</html>
